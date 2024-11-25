@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Commander un Sac</h2>
+    <form [formGroup]="productForm">
+    
+      <div class="mb-3">
+        <label  class="form-label">Nom complet</label>
+        <input type="text" class="form-control" formControlName="nom" placeholder="Entrez votre nom complet" >
+        @if (nom?.errors?.['required'] && nom?.touched) {
+          <div class="alert alert-danger">
+              le nom est un champ Obligatoire.
+          </div>}
+      </div>
+
+      
+      <div class="mb-3">
+        <label  class="form-label">Numéro de téléphone</label>
+        <input type="tel" class="form-control" formControlName="tel" placeholder="Entrez votre numéro de téléphone" >
+      </div>
+       @if (tel?.errors?.['required'] && tel?.touched) {
+        <div class="alert alert-danger">
+            le télephone est un champ Obligatoire.
+        </div>
+       }@else if (tel?.errors?.['pattern'] && tel?.touched ) {
+        <div class="alert alert-danger">
+            le numéros télephone est composé de 8 chiffres 
+            et ne doit pas commencer par un 0. 
+        </div>
+       }
+      
+      <div class="mb-3">
+        <label  class="form-label">Adresse de livraison</label>
+        <input type="text" class="form-control" formControlName="adresse" rows="3" placeholder="Entrez votre adresse de livraison" >
+        @if (adresse?.errors?.['required'] && adresse?.touched) {
+          <div class="alert alert-danger">
+              l'adresse est un champ Obligatoire.
+          </div>}
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Quantité</label>
+        <input type="text" class="form-control" formControlName="quantite" placeholder="Entrez la quantité " >
+        @if (quantite?.errors?.['required'] && quantite?.touched) {
+          <div class="alert alert-danger">
+              la quantité est un champ Obligatoire.
+          </div>}
+      </div>
+     
+      <button type="button" class="btn btn-dark w-100" [disabled]="productForm.invalid" (click)="commander()">Passer la commande</button>
+    </form>
+  </div>

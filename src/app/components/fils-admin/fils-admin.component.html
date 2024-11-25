@@ -1,0 +1,31 @@
+<div class="card" style="width: 18rem">
+  <img [src]="elt.photo" class="card-img-top" />
+  <div class="card-body">
+    <h5 class="card-title">{{ elt.nom }}</h5>
+    <p class="card-text">{{ elt.description }}</p>
+    <p><strong>Prix:</strong> {{ elt.prix | currency }}</p>
+    <p><strong>Categorie:</strong> {{ elt.categorie }}</p>
+    <p><strong>Quantité:</strong> {{ elt.quantite }}</p>
+    <div class="card-footer text-center">
+      @if(elt.categorie=="Femme"){
+      <button class="btn btn-outline-primary">
+        <a
+          [routerLink]="['/femme', elt.id]"
+          routerLinkActive="router-link-active"
+          >Voir les détails</a
+        >
+      </button>
+
+      }@else {
+      <button class="btn btn-outline-primary">
+        <a
+          [routerLink]="['/homme', elt.id]"
+          routerLinkActive="router-link-active"
+          >Voir les détails</a
+        >
+      </button>
+
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<div class="container mt-4">
+  <button class="btn btn-danger" (click)="onRetour()">Retour</button>
+  <h2 class="mb-4">Ajouter un sac</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit(); productForm.reset()">
+    <div class="mb-3">
+      <label class="form-label">Nom</label>
+      <input type="text" class="form-control" formControlName="nom" />
+    </div>
+    @if(nom?.errors?.['required'] && nom?.touched){
+    <div class="alert alert-danger">le champ Nom est Obligatoire</div>
+    }
+
+    <div class="mb-3">
+      <label class="form-label">URL de la Photo</label>
+      <input type="text" class="form-control" formControlName="photo" />
+      @if(photo?.errors?.['required'] && photo?.touched){
+        <div class="alert alert-danger">le champ photo est Obligatoire</div>
+        }
+    </div>
+   
+
+    <div class="mb-3">
+      <label for="categorie" class="form-label">Catégorie</label>
+      <input type="text" class="form-control" formControlName="categorie" />
+    </div>
+    @if(categorie?.errors?.['required'] && categorie?.touched){
+      <div class="alert alert-danger">le champ categorie est Obligatoire</div>
+      }
+
+    <div class="mb-3">
+      <label for="prix" class="form-label">Prix</label>
+      <input type="number" class="form-control" formControlName="prix" />
+    </div>
+    @if(prix?.errors?.['required'] && prix?.touched){
+    <div class="alert alert-danger">le champ Prix est Obligatoire</div>
+    }@else if (prix?.errors?.['min'] && prix?.touched) {
+    <div class="alert alert-danger">le champ Prix est Obligatoirement > 10</div>
+    }
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        formControlName="description"
+      ></textarea>
+      @if(description?.errors?.['required'] && description?.touched){
+        <div class="alert alert-danger">le champ Description est Obligatoire</div>
+        }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Détail</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        formControlName="detail"
+      ></textarea>
+      @if(detail?.errors?.['required'] && detail?.touched){
+        <div class="alert alert-danger">le champ detail est Obligatoire</div>
+        }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Promotion (%)</label>
+      <input type="number" class="form-control" formControlName="promotion" />
+    </div>
+    @if(promotion?.errors?.['required'] && promotion?.touched){
+      <div class="alert alert-danger">le champ promotion est Obligatoire</div>
+      }
+
+    <div class="mb-3">
+      <label class="form-label">Date de lancement</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="dateDelancement"
+      />
+      @if(dateDeLancement?.errors?.['required'] && dateDeLancement?.touched){
+        <div class="alert alert-danger">le champ dateDeLancement est Obligatoire</div>
+        }
+    </div>
+
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        formControlName="enStock"
+      />
+      <label class="form-check-label">En stock</label>
+    </div>
+
+    <div class="mb-3">
+      <label for="couleur" class="form-label">Couleur</label>
+      <input type="text" class="form-control" formControlName="couleur" />
+      @if(couleur?.errors?.['required'] && couleur?.touched){
+        <div class="alert alert-danger">le champ couleur est Obligatoire</div>
+        }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Quantité</label>
+      <input type="number" class="form-control" formControlName="quantite" />
+      @if(quantite?.errors?.['required'] && quantite?.touched){
+        <div class="alert alert-danger">le champ quantite est Obligatoire</div>
+        }
+    </div>
+
+    <div class="mb-3">
+      <label for="marque" class="form-label">Marque</label>
+      <input type="text" class="form-control" formControlName="marque" />
+      @if(marque?.errors?.['required'] && marque?.touched){
+        <div class="alert alert-danger">le champ marque est Obligatoire</div>
+        }
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="productForm.invalid"
+      >
+        Ajouter
+      </button>
+      <button type="button" (click)="onEffacer()" class="btn btn-secondary">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <button class="btn btn-dark" (click)="onDisconnect()">Deconnexion</button>
+  <button type="button" (click)="changeMdp()" class="btn btn-danger">
+    Réinitialiser le mot de passe
+  </button>
+  <button type="button" (click)="onRetour()" class="btn btn-dark">
+    Retour à la page d'acceuil
+  </button>
+  <h2>Liste des Sacs</h2>
+  <div class="row">
+    @for ( sac of sacs; track $index) {
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem">
+        <app-fils-admin [elt]="sac"></app-fils-admin>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-warning" (click)="onModifSac(sac.id)">
+            <i class="bi bi-pencil"></i> Modifier
+          </button>
+          <button class="btn btn-danger" (click)="onDeleteSac(sac.id)">
+            <i class="bi bi-trash"></i> Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

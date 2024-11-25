@@ -1,0 +1,15 @@
+<button type="button" (click)="onRetour()" class=" btn btn-dark">retour</button>
+<div>
+    <form [formGroup]="formGroup">
+    <strong>changer votre mot de passe :</strong>
+<input type="text" formControlName="mdp"  class="form-control"  placeholder="Entrez votre nouveau mot de passe " >
+@if (mdp?.invalid && mdp?.touched) {
+    <p>ce champ est obligatoire</p>
+}@else if (mdp?.errors?.['pattern']) {
+    <p>le mot de passe doit commencer par une lettre Majuscule et ne contient pas des chiffres</p>
+}@else if (mdp?.errors?.['minLength']){
+    <p>le mot de passe doit avoir au moin 4 caractéres</p>
+}
+ <button type="button" (click)="updateMdp()" class=" btn btn-danger" [disabled]="formGroup.invalid">Réinitialiser le mot de passe</button>
+</form>
+</div>

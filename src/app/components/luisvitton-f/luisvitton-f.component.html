@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <button class="btn btn-danger" (click)="onfemme()">retour</button>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        
+        @for (elt of sacsLv; track elt.id) {
+            <div class="col">
+                <div class="card shadow-lg rounded-3 border-light">
+                    
+                    @if (elt.promotion != 0) {
+                        <div class="position-absolute top-0 start-0 m-3 px-2 py-1 bg-danger text-white rounded-pill">
+                            -{{elt.promotion}}%
+                        </div>
+                    }
+                    
+                    
+                    <img [src]="elt.photo" class="card-img-top rounded-top" >
+                    
+                    <div class="card-body">
+                        
+                        <h5 class="card-title text-dark">{{elt.nom}}</h5>
+                        
+                        
+                        <p class="card-text text-muted">{{elt.prix}} DT</p>
+                    </div>
+                    
+                    <div class="card-footer text-center">
+                    
+                        <button class="btn btn-outline-primary w-100"><a [routerLink]="['/louis-vuitton.f',elt.id]" routerLinkActive="router-link-active" >Voir les détails</a></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

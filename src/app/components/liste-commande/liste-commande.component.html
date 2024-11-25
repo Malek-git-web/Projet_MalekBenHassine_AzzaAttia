@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>Liste des Commandes</h2>
+  
+   
+     @if (listeCommandes.length === 0) {
+        <div  class="alert alert-warning">
+            Aucune commande à afficher.
+          </div>
+     }
+   
+  
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          
+          <th scope="col">Nom</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Nom du Sac </th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (commande of listeCommandes; track $index) {
+            <tr>
+               
+                <td>{{ commande.nom }}</td>
+                <td>{{ commande.tel }}</td>
+                <td>{{ commande.adresse }}</td>
+                <td>{{ commande.quantite }}</td>
+                 <td>{{getProduitNom(commande.idSac)}}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="onSupprimer(commande.id)">
+                    Supprimer
+                  </button>
+                </td>
+              </tr>
+        }
+       
+      </tbody>
+    </table>
+  </div>
+  

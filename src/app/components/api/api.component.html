@@ -1,0 +1,15 @@
+<div>
+  <div class="product-details">
+    <h2>{{ response.title }}</h2>
+    <p class="product-description">{{ response.description }}</p>
+
+    
+    <div class="product-images">
+      <img
+        [src]="response.images[0]"
+        alt="Product Image"
+        class="product-image"
+      />
+    </div>
+  </div>
+</div>
